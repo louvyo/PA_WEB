@@ -1,3 +1,13 @@
+<?php
+require "koneksi.php";
+
+$countJacket = getCountJacketProducts($conn);
+$countTShirt = getCountTShirtProducts($conn);
+$countPants = getCountPantsProducts($conn);
+$countShoes = getCountShoesProducts($conn);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,10 +65,10 @@
                 </div>
                 <div class="cat-text">
                     <h5>Jacket</h5>
-                    <p>10 Items</p>
+                    <p><?php echo $countJacket; ?> Items</p>
                 </div>
                 <div class="arrow">
-                    <a href="#"><i class="bx bx-right-arrow-alt"></i></a>
+                    <a href="jaket.php"><i class="bx bx-right-arrow-alt"></i></a>
                 </div>
             </div>
             <div class="row">
@@ -67,10 +77,10 @@
                 </div>
                 <div class="cat-text">
                     <h5>T-Shirt</h5>
-                    <p>10 Items</p>
+                    <p><?php echo $countTShirt; ?> Items</p>
                 </div>
                 <div class="arrow">
-                    <a href="#"><i class="bx bx-right-arrow-alt"></i></a>
+                    <a href="tshirt.php"><i class="bx bx-right-arrow-alt"></i></a>
                 </div>
             </div>
             <div class="row">
@@ -79,10 +89,10 @@
                 </div>
                 <div class="cat-text">
                     <h5>Pants</h5>
-                    <p>10 Items</p>
+                    <p><?php echo $countPants; ?> Items</p>
                 </div>
                 <div class="arrow">
-                    <a href="#"><i class="bx bx-right-arrow-alt"></i></a>
+                    <a href="pants.php"><i class="bx bx-right-arrow-alt"></i></a>
                 </div>
             </div>
             <div class="row">
@@ -91,14 +101,46 @@
                 </div>
                 <div class="cat-text">
                     <h5>Shoes</h5>
-                    <p>10 Items</p>
+                    <p><?php echo $countShoes; ?> Items</p>
                 </div>
                 <div class="arrow">
-                    <a href="#"><i class="bx bx-right-arrow-alt"></i></a>
+                    <a href="shoes.php"><i class="bx bx-right-arrow-alt"></i></a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- contact -->
+    <section class="contact" id="contact">
+        <div class="main-contact">
+            <h3>Louvy</h3>
+            <h5>Rock the World</h5>
+            <div class="icons">
+                <a href=""><i class="bx bxl-facebook"></i></a>
+                <a href="https://www.instagram.com/hulooo._/"><i class="bx bxl-instagram"></i></a>
+                <a href=""><i class="bx bxl-twitter"></i></a>
+            </div>
+        </div>
+
+        <div class="main-contact">
+            <h3>Explore</h3>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#catalog">Catalog</a></li>
+            <!-- <li><a href="#aboutme">About Me</a></li> -->
+        </div>
+
+        <div class="main-contact">
+            <h3>Shopping</h3>
+            <li><a href="">Clothing Store</a></li>
+            <li><a href="">Trend</a></li>
+            <li><a href="">Accessories</a></li>
+        </div>
+    </section>
+
+    <footer class="last-text">
+        <p>Copyright &copy; 2023 All rights reserved | Louvy Store.</p>
+    </footer>
+    <a href="#" class="top"><i class="bx bx-up-arrow-alt"></i></a>
 
     <script src="script.js"></script>
 </body>
