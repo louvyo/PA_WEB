@@ -29,20 +29,33 @@ $products = getProductsByCategory($conn, $selectedCategory);
 <body>
     <h1>Produk Shoes</h1>
 
-    <?php
-    if ($products->num_rows > 0) {
-        while ($row = $products->fetch_assoc()) {
-            echo "<h2>Produk: " . $row['nama'] . "</h2>";
-            echo "Harga: " . $row['harga'] . "<br>";
-            echo "Kategori: " . $row['kategori'] . "<br>";
-            echo "Gambar: <img src='upload/" . $row['gambar'] . "' width='150'><br>";
-            echo "<hr>";
-        }
-    } else {
-        echo "Tidak ada produk dalam kategori Shoes.";
-    }
-    ?>
+    <div class="product-list">
+        <?php
+        if ($products->num_rows > 0) {
+            while ($row = $products->fetch_assoc()) {
+                echo "<div class='product'>";
+                echo "<h2>Produk: " . $row['nama'] . "</h2>";
+                echo "Harga: " . $row['harga'] . "<br>";
+                echo "Kategori: " . $row['kategori'] . "<br>";
+                echo "Gambar: <img src='upload/" . $row['gambar'] . "' width='150'><br>";
 
+                // Tambahkan form untuk menambahkan produk ke keranjang
+                echo "<form action='keranjang.php' method='post'>";
+                echo "<input type='hidden' name='product_id' value='" . $row['id'] . "'>";
+                echo "<input type='hidden' name='product_name' value='" . $row['nama'] . "'>";
+                echo "<input type='hidden' name='product_price' value='" . $row['harga'] . "'>";
+                echo "<input type='hidden' name='product_image' value='" . $row['gambar'] . "'>";
+                echo "<button type='submit' name='add_to_cart'>Add to Cart</button>";
+                echo "</form>";
+
+                echo "<hr>";
+                echo "</div>";
+            }
+        } else {
+            echo "Tidak ada produk dalam kategori Shoes.";
+        }
+        ?>
+    </div>
 </body>
 
 </html>
